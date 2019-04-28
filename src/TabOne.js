@@ -2,26 +2,45 @@ import React, { useState, useEffect } from 'react'
 import { Navigation } from 'react-native-navigation'
 import { SafeAreaView, Text, Button, FlatList } from 'react-native'
 import Person from './components/Person'
+import { colors } from './config'
 
 const styles = {
   container: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.background,
   },
 }
 
-const TabOne = props => {
-  const [employees, setEmployees] = useState([])
+class TabOne extends React.Component {
+  constructor(props) {
+    super(props)
 
-  useEffect(() => {
+    this.state = {
+      data: [],
+    }
+
+    this.navigate = this.navigate.bind(this)
+  }
+
+  componentDidMount() {
+    Navigation.mergeOptions(this.props.componentId, {
+      sideMenu: {
+        right: {
+          enabled: false,
+        },
+      },
+    })
+
     fetch('https://5cc33bae968a0b001496dfea.mockapi.io/people')
       .then(response => response.json())
       .then(data => {
-        setEmployees(data)
+        this.setState({
+          data,
+        })
       })
-  }, [])
+  }
 
-  const navigate = person => {
-    Navigation.push(props.componentId, {
+  navigate(person) {
+    Navigation.push(this.props.componentId, {
       component: {
         name: 'navigation.personDetails',
         passProps: {
@@ -29,24 +48,26 @@ const TabOne = props => {
         },
         options: {
           topBar: {
-            title: {
-              text: person.name,
-            },
+            visible: false,
           },
         },
       },
     })
   }
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={employees}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => <Person data={item} navigate={person => navigate(person)} />}
-      />
-    </SafeAreaView>
-  )
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <FlatList
+          data={this.state.data}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <Person data={item} navigate={person => this.navigate(person)} />
+          )}
+        />
+      </SafeAreaView>
+    )
+  }
 }
 
 export default TabOne

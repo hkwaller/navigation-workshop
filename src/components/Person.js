@@ -1,33 +1,52 @@
 import React from 'react'
-import { Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { Navigation } from 'react-native-navigation'
+import Pill from './Pill'
+import { colors } from '../config'
 
 const styles = {
-  container: backgroundColor => ({
-    borderBottomColor: backgroundColor,
-    backgroundColor: 'white',
-    borderBottomWidth: 4,
-    padding: 20,
-  }),
+  container: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 25,
+    marginHorizontal: 20,
+    marginVertical: 10,
+  },
   text: {
     fontSize: 34,
   },
   smallerText: {
     fontSize: 20,
+    flex: 4,
   },
-  image: {
-    width: 150,
-    height: 150,
+  line: {
+    height: 2,
+    backgroundColor: colors.lightPurple,
+    flex: 1,
+    marginVertical: 20,
+  },
+  row: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
   },
 }
 
 const Person = ({ data, navigate }) => {
   return (
-    <TouchableOpacity style={styles.container(data.background)} onPress={() => navigate(data)}>
+    <TouchableOpacity style={styles.container} onPress={() => navigate(data)}>
       <Text style={styles.text}>{data.name}</Text>
-      <Text style={styles.smallerText}>{data.jobTitle}</Text>
-      <Text style={[styles.smallerText, { color: 'tomato' }]}>{data.jobDescriptor}</Text>
+      <View style={styles.line} />
+      <View style={styles.row}>
+        <Pill color={colors.lightPurple} background={colors.purple} text="Tittel" />
+        <Text style={styles.smallerText}>{data.jobTitle}</Text>
+      </View>
+      <View style={[styles.row, { marginTop: 20 }]}>
+        <Pill color={colors.lightTurquoise} background={colors.turquoise} text="Bedrift" />
+        <Text style={styles.smallerText}>{data.jobDescriptor}</Text>
+      </View>
     </TouchableOpacity>
   )
 }
+
 export default Person
