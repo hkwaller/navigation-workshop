@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Image, ScrollView, Text, SafeAreaView, TouchableOpacity } from 'react-native'
-import { Navigation } from 'react-native-navigation'
+// import { Navigation } from 'react-native-navigation'
 import { colors } from '../config'
 
 const phoneIcon = require('../../img/phone.png')
@@ -61,21 +61,24 @@ const ContactButton = ({ background, icon, onPress }) => {
 }
 
 class PersonDetails extends React.Component {
+  static navigationOptions = {
+    header: null,
+  }
+
   constructor(props) {
     super(props)
   }
 
   render() {
-    const { props } = this
-
-    const { avatar, name, jobTitle, company } = props.data
+    const { data } = this.props.navigation.state.params
+    const { avatar, name, jobTitle, company } = data
 
     return (
       <SafeAreaView style={styles.wrapper}>
         <ScrollView>
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => Navigation.pop(this.props.componentId)}
+            onPress={() => this.props.navigation.goBack()}
           >
             <Image source={require('../../img/back.png')} style={{ width: 15, height: 20 }} />
           </TouchableOpacity>
@@ -95,42 +98,22 @@ class PersonDetails extends React.Component {
             <ContactButton
               icon={phoneIcon}
               background={colors.purple}
-              onPress={async () => {
-                await Navigation.showModal({
-                  component: {
-                    name: 'navigation.modal',
-                    passProps: {
-                      text: `Ringer ${name}`,
-                      icon: phoneIcon,
-                      background: colors.purple,
-                    },
-                    options: {
-                      overlay: {
-                        interceptTouchOutside: true,
-                      },
-                    },
-                  },
+              onPress={() => {
+                this.props.navigation.navigate('MyModal', {
+                  text: `Ringer ${name}`,
+                  icon: phoneIcon,
+                  background: colors.purple,
                 })
               }}
             />
             <ContactButton
               icon={mailIcon}
               background={colors.turquoise}
-              onPress={async () => {
-                await Navigation.showModal({
-                  component: {
-                    name: 'navigation.modal',
-                    passProps: {
-                      text: `Mailer ${name}`,
-                      background: colors.turquoise,
-                      icon: phoneIcon,
-                    },
-                    options: {
-                      overlay: {
-                        interceptTouchOutside: true,
-                      },
-                    },
-                  },
+              onPress={() => {
+                this.props.navigation.navigate('MyModal', {
+                  text: `Mailer ${name}`,
+                  icon: mailIcon,
+                  background: colors.turquoise,
                 })
               }}
             />

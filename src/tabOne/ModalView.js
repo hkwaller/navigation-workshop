@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View, Image } from 'react-native'
-import { Navigation } from 'react-native-navigation'
+// import { Navigation } from 'react-native-navigation'
 
 const styles = {
   container: background => ({
@@ -17,13 +17,16 @@ const styles = {
   },
 }
 class ModalView extends React.Component {
+  static navigationOptions = { tabBarVisible: false }
+
   componentDidMount() {
     setTimeout(() => {
-      Navigation.dismissModal(this.props.componentId)
+      this.props.navigation.goBack()
     }, 2000)
   }
   render() {
-    const { background, text, icon } = this.props
+    const { background, text, icon } = this.props.navigation.state.params
+
     return (
       <View style={styles.container(background)}>
         <Text style={styles.text}>{text}</Text>
