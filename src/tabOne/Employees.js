@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Navigation } from 'react-native-navigation'
-import { SafeAreaView, Text, Button, FlatList } from 'react-native'
-import Person from './components/Person'
-import { colors } from './config'
+import { SafeAreaView, FlatList } from 'react-native'
+import Person from '../components/Person'
+import { colors } from '../config'
 
 const styles = {
   container: {
@@ -10,7 +10,7 @@ const styles = {
   },
 }
 
-class TabOne extends React.Component {
+class Employees extends React.Component {
   constructor(props) {
     super(props)
 
@@ -70,4 +70,4 @@ class TabOne extends React.Component {
   }
 }
 
-export default TabOne
+export default Employees

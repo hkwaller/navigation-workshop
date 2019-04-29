@@ -1,19 +1,18 @@
 /** @format */
 
 import { Navigation } from 'react-native-navigation'
-import { Dimensions } from 'react-native'
 
-import TabOne from './src/TabOne'
+import Employees from './src/tabOne/Employees'
 import ModalView from './src/tabOne/ModalView'
 import PersonDetails from './src/tabOne/PersonDetails'
-import TabTwo from './src/TabTwo'
+import OverView from './src/tabTwo/Overview'
 import SideMenu from './src/SideMenu'
 
 import { colors } from './src/config'
 
-Navigation.registerComponent('navigation.tabOne', () => TabOne)
+Navigation.registerComponent('navigation.tabOne', () => Employees)
 Navigation.registerComponent('navigation.personDetails', () => PersonDetails)
-Navigation.registerComponent('navigation.tabTwo', () => TabTwo)
+Navigation.registerComponent('navigation.tabTwo', () => OverView)
 Navigation.registerComponent('navigation.modal', () => ModalView)
 Navigation.registerComponent('navigation.sideMenu', () => SideMenu)
 
