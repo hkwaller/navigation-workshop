@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Image, ScrollView, Text, SafeAreaView, TouchableOpacity } from 'react-native'
-// import { Navigation } from 'react-native-navigation'
 import { colors } from '../config'
 
 const phoneIcon = require('../../img/phone.png')
@@ -61,25 +60,13 @@ const ContactButton = ({ background, icon, onPress }) => {
 }
 
 class PersonDetails extends React.Component {
-  static navigationOptions = {
-    header: null,
-  }
-
-  constructor(props) {
-    super(props)
-  }
-
   render() {
-    const { data } = this.props.navigation.state.params
-    const { avatar, name, jobTitle, company } = data
+    // hente ut data fra props
 
     return (
       <SafeAreaView style={styles.wrapper}>
         <ScrollView>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => this.props.navigation.goBack()}
-          >
+          <TouchableOpacity style={styles.backButton} onPress={() => {}}>
             <Image source={require('../../img/back.png')} style={{ width: 15, height: 20 }} />
           </TouchableOpacity>
           <Text style={styles.header}>{name}</Text>
@@ -87,36 +74,21 @@ class PersonDetails extends React.Component {
             <Image source={{ uri: avatar }} style={styles.avatar} />
             <View>
               <Text style={styles.text}>
-                Works as <BiggerText>{jobTitle}</BiggerText> at <BiggerText>{company}</BiggerText>
+                Arbeider som <BiggerText>{jobTitle}</BiggerText> på{' '}
+                <BiggerText>{company}</BiggerText>
               </Text>
             </View>
           </View>
           <Text style={styles.header}>Kontake {name}</Text>
           <View
-            style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-around',
+            }}
           >
-            <ContactButton
-              icon={phoneIcon}
-              background={colors.purple}
-              onPress={() => {
-                this.props.navigation.navigate('MyModal', {
-                  text: `Ringer ${name}`,
-                  icon: phoneIcon,
-                  background: colors.purple,
-                })
-              }}
-            />
-            <ContactButton
-              icon={mailIcon}
-              background={colors.turquoise}
-              onPress={() => {
-                this.props.navigation.navigate('MyModal', {
-                  text: `Mailer ${name}`,
-                  icon: mailIcon,
-                  background: colors.turquoise,
-                })
-              }}
-            />
+            <ContactButton icon={phoneIcon} background={colors.purple} onPress={() => {}} />
+            <ContactButton icon={mailIcon} background={colors.turquoise} onPress={() => {}} />
           </View>
         </ScrollView>
       </SafeAreaView>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, View, Image } from 'react-native'
-// import { Navigation } from 'react-native-navigation'
 
 const styles = {
   container: background => ({
@@ -23,15 +22,8 @@ const styles = {
 }
 
 class ModalView extends React.Component {
-  static navigationOptions = { tabBarVisible: false }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.props.navigation.goBack()
-    }, 2000)
-  }
   render() {
-    const { background, text, icon } = this.props.navigation.state.params
+    // hente data fra props
 
     return (
       <View style={styles.container(background)}>

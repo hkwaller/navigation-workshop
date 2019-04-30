@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Navigation } from 'react-native-navigation'
 import { SafeAreaView, FlatList } from 'react-native'
 import Person from '../components/Person'
 import { colors } from '../config'
@@ -11,10 +10,6 @@ const styles = {
 }
 
 class Employees extends React.Component {
-  static navigationOptions = {
-    title: 'Ansatte',
-  }
-
   constructor(props) {
     super(props)
 
@@ -36,9 +31,7 @@ class Employees extends React.Component {
   }
 
   navigate(person) {
-    this.props.navigation.navigate('PersonDetails', {
-      data: person,
-    })
+    // naviger til detaljerside
   }
 
   render() {
