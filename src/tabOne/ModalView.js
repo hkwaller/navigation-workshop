@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, View, Image } from 'react-native'
-// import { Navigation } from 'react-native-navigation'
 
 const styles = {
   container: background => ({

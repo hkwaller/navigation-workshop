@@ -1,6 +1,5 @@
 import React from 'react'
 import { SafeAreaView, Text, Dimensions, View, Image } from 'react-native'
-// import { Navigation } from 'react-native-navigation'
 import { PieChart } from 'react-native-chart-kit'
 import { colors, chartData, otherChart, chartConfig } from '../config'
 import { TouchableOpacity } from 'react-native-gesture-handler'

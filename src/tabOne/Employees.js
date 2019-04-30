@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Navigation } from 'react-native-navigation'
 import { SafeAreaView, FlatList } from 'react-native'
 import Person from '../components/Person'
 import { colors } from '../config'

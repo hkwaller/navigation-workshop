@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Image, ScrollView, Text, SafeAreaView, TouchableOpacity } from 'react-native'
-// import { Navigation } from 'react-native-navigation'
 import { colors } from '../config'
 
 const phoneIcon = require('../../img/phone.png')
