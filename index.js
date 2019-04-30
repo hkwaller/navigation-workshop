@@ -16,11 +16,6 @@ Navigation.events().registerAppLaunchedListener(() => {
           {
             component: {
               name: 'navigation.tabOne',
-              topBar: {
-                title: {
-                  text: 'Ansatte',
-                },
-              },
             },
           },
         ],
