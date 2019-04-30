@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import { Navigation } from 'react-native-navigation'
 import { colors } from './config'
 
 const styles = {
@@ -35,18 +34,7 @@ class SideMenu extends React.PureComponent {
     return (
       <View style={styles.container}>
         <View style={styles.topWrapper}>
-          <TouchableOpacity
-            onPress={() => {
-              Navigation.mergeOptions(this.props.componentId, {
-                sideMenu: {
-                  right: {
-                    visible: false,
-                  },
-                },
-              })
-            }}
-            style={styles.hamburgerButton}
-          >
+          <TouchableOpacity onPress={() => {}} style={styles.hamburgerButton}>
             <Text style={styles.hamburgerX}>X</Text>
             <Image
               source={require('../img/hamburger-white.png')}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, Image, ScrollView, Text, SafeAreaView, TouchableOpacity } from 'react-native'
-import { Navigation } from 'react-native-navigation'
 import { colors } from '../config'
 
 const phoneIcon = require('../../img/phone.png')
@@ -66,17 +65,11 @@ class PersonDetails extends React.Component {
   }
 
   render() {
-    const { props } = this
-
-    const { avatar, name, jobTitle, company } = props.data
-
+    // hente data fra props
     return (
       <SafeAreaView style={styles.wrapper}>
         <ScrollView>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => Navigation.pop(this.props.componentId)}
-          >
+          <TouchableOpacity style={styles.backButton} onPress={() => {}}>
             <Image source={require('../../img/back.png')} style={{ width: 15, height: 20 }} />
           </TouchableOpacity>
           <Text style={styles.header}>{name}</Text>
@@ -92,48 +85,8 @@ class PersonDetails extends React.Component {
           <View
             style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}
           >
-            <ContactButton
-              icon={phoneIcon}
-              background={colors.purple}
-              onPress={async () => {
-                await Navigation.showModal({
-                  component: {
-                    name: 'navigation.modal',
-                    passProps: {
-                      text: `Ringer ${name}`,
-                      icon: phoneIcon,
-                      background: colors.purple,
-                    },
-                    options: {
-                      overlay: {
-                        interceptTouchOutside: true,
-                      },
-                    },
-                  },
-                })
-              }}
-            />
-            <ContactButton
-              icon={mailIcon}
-              background={colors.turquoise}
-              onPress={async () => {
-                await Navigation.showModal({
-                  component: {
-                    name: 'navigation.modal',
-                    passProps: {
-                      text: `Mailer ${name}`,
-                      background: colors.turquoise,
-                      icon: phoneIcon,
-                    },
-                    options: {
-                      overlay: {
-                        interceptTouchOutside: true,
-                      },
-                    },
-                  },
-                })
-              }}
-            />
+            <ContactButton icon={phoneIcon} background={colors.purple} onPress={async () => {}} />
+            <ContactButton icon={mailIcon} background={colors.turquoise} onPress={async () => {}} />
           </View>
         </ScrollView>
       </SafeAreaView>

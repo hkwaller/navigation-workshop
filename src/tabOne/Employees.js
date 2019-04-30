@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navigation } from 'react-native-navigation'
 import { SafeAreaView, FlatList } from 'react-native'
 import Person from '../components/Person'
 import { colors } from '../config'
@@ -22,14 +21,6 @@ class Employees extends React.Component {
   }
 
   componentDidMount() {
-    Navigation.mergeOptions(this.props.componentId, {
-      sideMenu: {
-        right: {
-          enabled: false,
-        },
-      },
-    })
-
     fetch('https://5cc33bae968a0b001496dfea.mockapi.io/people')
       .then(response => response.json())
       .then(data => {
@@ -40,19 +31,7 @@ class Employees extends React.Component {
   }
 
   navigate(person) {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'navigation.personDetails',
-        passProps: {
-          data: person,
-        },
-        options: {
-          topBar: {
-            visible: false,
-          },
-        },
-      },
-    })
+    // navigere til detaljer
   }
 
   render() {
