@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, Text, Dimensions, View } from 'react-native'
+import { SafeAreaView, Text, Dimensions, View, TouchableOpacity, Image } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { PieChart } from 'react-native-chart-kit'
 import { colors, chartData, otherChart, chartConfig } from '../config'
@@ -18,6 +18,16 @@ const styles = {
     padding: 20,
     backgroundColor: '#fff',
   },
+  hamburgerWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
+  oversiktHeader: {
+    fontSize: 34,
+    fontWeight: 'bold',
+  },
 }
 
 class Overview extends React.Component {
@@ -32,12 +42,36 @@ class Overview extends React.Component {
           width: 300,
         },
       },
+      topBar: {
+        visible: false,
+      },
     })
   }
 
   render() {
     return (
       <SafeAreaView style={styles.wrapper}>
+        <View style={styles.hamburgerWrapper}>
+          <Text style={styles.oversiktHeader}>Oversikt</Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              Navigation.mergeOptions(this.props.componentId, {
+                sideMenu: {
+                  right: {
+                    visible: true,
+                  },
+                },
+              })
+            }}
+          >
+            <Image
+              source={require('../../img/hamburger.png')}
+              style={{ width: 20, height: 20 }}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+        </View>
         <View style={styles.container}>
           <PieChart
             data={chartData}
