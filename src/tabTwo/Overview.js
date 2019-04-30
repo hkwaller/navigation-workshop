@@ -19,35 +19,24 @@ const styles = {
     padding: 20,
     backgroundColor: '#fff',
   },
+  hamburgerWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
+  oversiktHeader: {
+    fontSize: 34,
+    fontWeight: 'bold',
+  },
 }
 
-class Overview extends React.Component {
-  componentDidMount() {
-    // Navigation.mergeOptions(this.props.componentId, {
-    //   bottomTab: {
-    //     selectedIconColor: colors.turquoise,
-    //     selectedTextColor: colors.turquoise,
-    //   },
-    //   sideMenu: {
-    //     right: {
-    //       width: 300,
-    //     },
-    //   },
-    // })
-  }
-
+class Overview extends React.PureComponent {
   render() {
     return (
       <SafeAreaView style={styles.wrapper}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: 20,
-          }}
-        >
-          <Text style={{ fontSize: 34, fontWeight: 'bold' }}>Oversikt</Text>
+        <View style={styles.hamburgerWrapper}>
+          <Text style={styles.oversiktHeader}>Oversikt</Text>
 
           <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}>
             <Image

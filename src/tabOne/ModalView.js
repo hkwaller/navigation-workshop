@@ -15,7 +15,13 @@ const styles = {
     textAlign: 'center',
     color: '#fff',
   },
+  icon: {
+    width: 60,
+    height: 60,
+    marginTop: 40,
+  },
 }
+
 class ModalView extends React.Component {
   static navigationOptions = { tabBarVisible: false }
 
@@ -30,7 +36,7 @@ class ModalView extends React.Component {
     return (
       <View style={styles.container(background)}>
         <Text style={styles.text}>{text}</Text>
-        <Image source={icon} style={{ width: 60, height: 60, marginTop: 40 }} />
+        <Image source={icon} style={styles.icon} />
       </View>
     )
   }
